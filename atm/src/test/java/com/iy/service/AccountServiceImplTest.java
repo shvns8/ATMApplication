@@ -48,7 +48,7 @@ public class AccountServiceImplTest {
     	Account acc = new Account("120","Raj","Singh","raj12@gmail.com","9009876123","Active",12.37);
          
         when(accRepository.findById(acc.getAccNumber()))
-        .thenReturn(Optional.ofNullable(null));
+        .thenReturn(Optional.of(acc));
 
 		accService.addAccount(acc);
          

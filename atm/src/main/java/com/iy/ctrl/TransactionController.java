@@ -1,3 +1,6 @@
+/**
+ * The class provides API's to the user for performing depositing cash, withdrawing cash, checking balance for an account
+ */
 package com.iy.ctrl;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +23,17 @@ public class TransactionController {
 	@Autowired
 	private TransactionService tranService;
 	
+	/**
+	 * The method is used to deposit cash into an account
+	 * 
+	 * @param accNumber - holds the account number into which cash is to be deposited
+	 * 
+	 * @param amount - holds the amount of cash which needs to be deposited
+	 * 
+	 * @return 200 OK - when cash deposited
+	 * 
+	 * @return 400 Bad request - when cash could not be deposited
+	 */
 	@PutMapping(value="/deposit")
 	public ResponseEntity<String> depositCash(@RequestParam(name="accnumber") String accNumber, @RequestParam(name="amount") double amount)
 	{
@@ -34,6 +48,17 @@ public class TransactionController {
 		return ResponseEntity.ok("The amount of "+amount+" is deposited in your account");
 	}
 	
+	/**
+	 * The method is used to withdraw cash into an account
+	 * 
+	 * @param accNumber - holds the account number from which cash is to be withdrawn
+	 * 
+	 * @param amount - holds the amount of cash which needs to be withdrawn
+	 * 
+	 * @return 200 OK - when cash withdrawn
+	 * 
+	 * @return 400 Bad request - when cash could not be withdrawn
+	 */
 	@PutMapping(value="/withdraw")
 	public ResponseEntity<String> withdrawCash(@RequestParam(name="accnumber") String accNumber, @RequestParam(name="amount") double amount)
 	{
@@ -47,6 +72,15 @@ public class TransactionController {
 		return ResponseEntity.ok("The amount of "+amount+" is withdrawn from your account");
 	}
 	
+	/**
+	 * The method is used to check balance in an account
+	 * 
+	 * @param accNumber - holds the account number for which the balance is to be checked
+	 * 
+	 * @return 200 OK - when balance retrieved 
+	 * 
+	 * @return 400 Bad request - when balance could not be retrieved
+	 */
 	@GetMapping(value="/getbalance/{accnumber}")
 	public ResponseEntity<String> getBalance(@PathVariable("accnumber") String accNumber)
 	{

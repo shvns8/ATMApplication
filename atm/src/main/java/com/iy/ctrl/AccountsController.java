@@ -1,8 +1,11 @@
+/**
+ * The class provides API's to the user for performing CRUD operation on Account Resource
+ */
+
 package com.iy.ctrl;
 
 import java.util.List;
 import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,6 +28,15 @@ public class AccountsController {
 	@Autowired
 	private AccountService accService;
 	
+	/**
+	 * The method is used to create an account
+	 * 
+	 * @param account - holds the account object to be created
+	 * 
+	 * @return 200 OK - when account created
+	 * 
+	 * @return 400 Bad request - when was not created
+	 */
 	@PostMapping("/add")
 	public ResponseEntity<String> add(@RequestBody Account account){
 		try
